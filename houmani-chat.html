@@ -11,22 +11,34 @@
   --bg:#0d0f14;--surface:#151820;--surface2:#1c2030;
   --border:rgba(255,255,255,0.07);--accent:#4f8ef7;--accent2:#7c5cf6;
   --green:#22c55e;--red:#ef4444;--text:#e8eaf0;--muted:rgba(232,234,240,0.45);
-  --shadow:0 8px 32px rgba(0,0,0,0.45);
+  --radius:14px;--shadow:0 8px 32px rgba(0,0,0,0.45);
 }
 html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:'Cairo',sans-serif;color:var(--text);}
-#landing{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;
+
+/* ── LANDING ── */
+#landing{
+  position:fixed;inset:0;z-index:100;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
   background:radial-gradient(ellipse at 40% 30%,rgba(79,142,247,0.12) 0%,transparent 60%),
              radial-gradient(ellipse at 70% 70%,rgba(124,92,246,0.1) 0%,transparent 55%),var(--bg);
-  padding:24px;animation:fadeIn .5s ease;}
+  padding:24px;animation:fadeIn .5s ease;
+}
 #landing.gone{animation:fadeOut .3s ease forwards;pointer-events:none;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeOut{to{opacity:0;transform:scale(0.97)}}
+
 .brand{display:flex;flex-direction:column;align-items:center;margin-bottom:28px;}
-.brand-icon{width:68px;height:68px;border-radius:22px;margin-bottom:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 0 40px rgba(79,142,247,0.4);animation:pulse 3s ease infinite;}
+.brand-icon{
+  width:68px;height:68px;border-radius:22px;margin-bottom:14px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;font-size:30px;
+  box-shadow:0 0 40px rgba(79,142,247,0.4);animation:pulse 3s ease infinite;
+}
 @keyframes pulse{0%,100%{box-shadow:0 0 40px rgba(79,142,247,0.35)}50%{box-shadow:0 0 65px rgba(79,142,247,0.6)}}
-.brand-name{font-size:30px;font-weight:800;}
+.brand-name{font-size:30px;font-weight:800;letter-spacing:-0.5px;}
 .brand-name span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .brand-sub{font-size:13px;color:var(--muted);margin-top:4px;}
+
 .card{width:100%;max-width:400px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:var(--shadow);}
 .tabs{display:flex;background:var(--bg);border-radius:10px;padding:3px;margin-bottom:20px;gap:3px;}
 .tab{flex:1;padding:9px;border:none;background:none;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;color:var(--muted);transition:all .2s;}
@@ -38,624 +50,721 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 .field input::placeholder{color:rgba(255,255,255,0.2);}
 .btn{width:100%;padding:13px;border:none;border-radius:10px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;transition:all .15s;}
 .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 4px 20px rgba(79,142,247,0.35);}
-.btn-primary:hover{transform:translateY(-1px);}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(79,142,247,0.5);}
 .btn-primary:active{transform:scale(0.98);}
 .btn-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
-.btn-wa{width:100%;padding:12px;border:none;border-radius:10px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;margin-top:10px;background:linear-gradient(135deg,#25d366,#128c3e);color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .15s;box-shadow:0 4px 20px rgba(37,211,102,0.3);}
-.btn-wa:hover{transform:translateY(-1px);}
-.code-box{background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);border-radius:10px;padding:12px 14px;margin-bottom:14px;}
-.code-label{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
-.code-val{font-family:'Space Mono',monospace;font-size:22px;font-weight:700;color:var(--accent);letter-spacing:5px;}
-.code-hint{font-size:11px;color:var(--muted);margin-top:3px;}
-.lang-btn{position:absolute;top:16px;left:16px;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);font-family:inherit;transition:all .2s;}
-.lang-btn:hover{border-color:var(--accent);color:var(--text);}
-/* APP */
+.btn-whatsapp{width:100%;padding:12px;border:none;border-radius:10px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;margin-top:10px;background:linear-gradient(135deg,#25d366,#128c3e);color:#fff;box-shadow:0 4px 20px rgba(37,211,102,0.3);display:flex;align-items:center;justify-content:center;gap:8px;transition:all .15s;}
+.btn-whatsapp:hover{transform:translateY(-1px);}
+
+.fixed-code-box{background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);border-radius:10px;padding:12px 14px;margin-bottom:14px;}
+.fixed-code-label{font-size:10px;color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.fixed-code-value{font-family:'Space Mono',monospace;font-size:22px;font-weight:700;color:var(--accent);letter-spacing:5px;}
+.fixed-code-hint{font-size:11px;color:var(--muted);margin-top:3px;}
+
+.lang-toggle{position:absolute;top:16px;left:16px;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;font-size:12px;font-weight:700;color:var(--muted);transition:all .2s;font-family:inherit;}
+.lang-toggle:hover{border-color:var(--accent);color:var(--text);}
+
+/* ── MAIN APP ── */
 #app{position:fixed;inset:0;z-index:50;display:none;flex-direction:column;background:var(--bg);}
 #app.show{display:flex;}
+
 #header{display:flex;align-items:center;gap:12px;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;}
-.hlogo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.hinfo{flex:1;min-width:0;}
-.hroom{font-size:15px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.hcode{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);cursor:pointer;display:inline-flex;align-items:center;gap:4px;}
-.hcode:hover{text-decoration:underline;}
-.hactions{display:flex;gap:8px;flex-shrink:0;}
-.ibtn{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s;color:var(--text);}
-.ibtn:hover{background:rgba(79,142,247,0.15);border-color:var(--accent);}
-.ibtn.active{background:rgba(79,142,247,0.2);border-color:var(--accent);}
-.ibtn.danger:hover{background:rgba(239,68,68,0.15);border-color:var(--red);}
+.header-logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.header-info{flex:1;min-width:0;}
+.header-room{font-size:15px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.header-code{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);cursor:pointer;display:inline-flex;align-items:center;gap:4px;}
+.header-code:hover{text-decoration:underline;}
+.header-actions{display:flex;gap:8px;flex-shrink:0;}
+.icon-btn{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s;color:var(--text);}
+.icon-btn:hover{background:rgba(79,142,247,0.15);border-color:var(--accent);}
+.icon-btn.danger:hover{background:rgba(239,68,68,0.15);border-color:var(--red);}
+
+/* Online indicator */
 .online-bar{display:flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(34,197,94,0.06);border-bottom:1px solid rgba(34,197,94,0.12);flex-shrink:0;}
-.odot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s ease infinite;}
+.online-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s ease infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.4}}
-.otext{font-size:11px;color:var(--green);font-weight:700;flex:1;}
-.ocount{font-size:11px;color:var(--muted);}
-.share-bar{display:flex;align-items:center;gap:8px;padding:7px 16px;background:rgba(37,211,102,0.07);border-bottom:1px solid rgba(37,211,102,0.13);flex-shrink:0;cursor:pointer;transition:background .2s;}
-.share-bar:hover{background:rgba(37,211,102,0.13);}
-.sbar-text{font-size:12px;font-weight:600;color:#25d366;flex:1;}
-.sbar-code{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#25d366;background:rgba(37,211,102,0.12);padding:2px 10px;border-radius:8px;letter-spacing:2px;}
-#members-bar{display:flex;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;}
-#members-bar-header{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 4px;gap:8px;}
-#members-bar-title{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
-#members-bar-counts{display:flex;gap:10px;font-size:11px;font-weight:700;}
-.count-online{color:var(--green);}
-.count-offline{color:var(--red);}
-#members-bar-list{display:flex;align-items:center;gap:8px;padding:4px 16px 10px;overflow-x:auto;scrollbar-width:none;}
-#members-bar-list::-webkit-scrollbar{display:none;}
-.mchip{display:flex;align-items:center;gap:6px;padding:5px 10px 5px 6px;border-radius:20px;background:var(--surface2);border:1px solid var(--border);font-size:12px;font-weight:600;white-space:nowrap;flex-shrink:0;transition:border-color .2s;}
-.mchip.offline{opacity:0.45;filter:grayscale(0.4);}
-.mavatar{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;position:relative;}
-.mstatus{width:8px;height:8px;border-radius:50%;border:2px solid var(--surface2);position:absolute;bottom:-1px;right:-1px;}
-.mstatus.online{background:var(--green);}
-.mstatus.offline{background:var(--red);}
-.mself{border-color:rgba(79,142,247,0.4);}
-.kbtn{width:16px;height:16px;border-radius:50%;border:none;background:rgba(239,68,68,0.2);color:var(--red);font-size:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
-.kbtn:hover{background:rgba(239,68,68,0.5);}
-#msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:2px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
-#msgs::-webkit-scrollbar{width:4px;}
-#msgs::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
-.day-div{text-align:center;font-size:11px;color:var(--muted);margin:12px 0;display:flex;align-items:center;gap:10px;}
-.day-div::before,.day-div::after{content:'';flex:1;height:1px;background:var(--border);}
+.online-text{font-size:11px;color:var(--green);font-weight:700;flex:1;}
+.online-count{font-size:11px;color:var(--muted);}
+
+/* Share banner */
+.share-banner{display:flex;align-items:center;gap:8px;padding:7px 16px;background:rgba(37,211,102,0.07);border-bottom:1px solid rgba(37,211,102,0.13);flex-shrink:0;cursor:pointer;transition:background .2s;}
+.share-banner:hover{background:rgba(37,211,102,0.13);}
+.share-banner-text{font-size:12px;font-weight:600;color:#25d366;flex:1;}
+.share-banner-code{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#25d366;background:rgba(37,211,102,0.12);padding:2px 10px;border-radius:8px;letter-spacing:2px;}
+
+/* Members bar */
+#members-bar{display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;flex-shrink:0;scrollbar-width:none;}
+#members-bar::-webkit-scrollbar{display:none;}
+.member-chip{display:flex;align-items:center;gap:6px;padding:4px 10px 4px 5px;border-radius:20px;background:var(--surface2);border:1px solid var(--border);font-size:12px;font-weight:600;white-space:nowrap;flex-shrink:0;}
+.member-avatar{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;}
+.member-status{width:7px;height:7px;border-radius:50%;background:var(--green);}
+.member-self{border-color:rgba(79,142,247,0.4);}
+.kick-btn{width:16px;height:16px;border-radius:50%;border:none;background:rgba(239,68,68,0.2);color:var(--red);font-size:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.kick-btn:hover{background:rgba(239,68,68,0.5);}
+
+/* Messages */
+#messages-wrap{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:2px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+#messages-wrap::-webkit-scrollbar{width:4px;}
+#messages-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.msg-day{text-align:center;font-size:11px;color:var(--muted);margin:12px 0;display:flex;align-items:center;gap:10px;}
+.msg-day::before,.msg-day::after{content:'';flex:1;height:1px;background:var(--border);}
 .msg{display:flex;gap:10px;padding:3px 0;animation:msgIn .2s ease;}
 @keyframes msgIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 .msg.mine{flex-direction:row-reverse;}
-.mavtr{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;align-self:flex-end;}
-.mbody{max-width:75%;display:flex;flex-direction:column;gap:2px;}
-.msg.mine .mbody{align-items:flex-end;}
-.mmeta{display:flex;align-items:center;gap:6px;padding:0 4px;}
-.mname{font-size:11px;font-weight:700;}
-.mtime{font-size:10px;color:rgba(255,255,255,0.22);}
-.mbubble{padding:9px 13px;border-radius:16px;font-size:14px;line-height:1.5;word-break:break-word;background:var(--surface2);border:1px solid var(--border);border-bottom-left-radius:4px;position:relative;}
-.msg.mine .mbubble{background:linear-gradient(135deg,rgba(79,142,247,0.28),rgba(124,92,246,0.22));border-color:rgba(79,142,247,0.3);border-bottom-right-radius:4px;border-bottom-left-radius:16px;}
-.mbubble:hover .rbtn{opacity:1;}
-.rbtn{position:absolute;right:-8px;top:-8px;width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;}
-.reacts{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px;}
-.rbadge{padding:2px 7px;border-radius:20px;font-size:12px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;gap:3px;}
-.rbadge .rc{font-size:10px;font-weight:700;color:var(--muted);}
-.sysmsg{text-align:center;font-size:12px;color:var(--muted);padding:5px 14px;margin:6px auto;background:rgba(255,255,255,0.03);border-radius:20px;border:1px solid var(--border);max-width:300px;}
-.epicker{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:8px;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;z-index:30;box-shadow:var(--shadow);animation:popIn .15s ease;}
-@keyframes popIn{from{opacity:0;transform:scale(0.9) translateY(6px)}to{opacity:1;transform:scale(1)}}
-.epicker span{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;border-radius:8px;transition:background .1s;}
-.epicker span:hover{background:var(--surface2);}
+.msg-avatar{width:32px;height:32px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;align-self:flex-end;}
+.msg-body{max-width:75%;display:flex;flex-direction:column;gap:2px;}
+.msg.mine .msg-body{align-items:flex-end;}
+.msg-meta{display:flex;align-items:center;gap:6px;padding:0 4px;}
+.msg-name{font-size:11px;font-weight:700;}
+.msg-time{font-size:10px;color:rgba(255,255,255,0.22);}
+.msg-bubble{padding:9px 13px;border-radius:16px;font-size:14px;line-height:1.5;word-break:break-word;background:var(--surface2);border:1px solid var(--border);border-bottom-left-radius:4px;position:relative;}
+.msg.mine .msg-bubble{background:linear-gradient(135deg,rgba(79,142,247,0.28),rgba(124,92,246,0.22));border-color:rgba(79,142,247,0.3);border-bottom-right-radius:4px;border-bottom-left-radius:16px;}
+.msg-bubble:hover .react-btn{opacity:1;}
+.react-btn{position:absolute;right:-8px;top:-8px;width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;}
+.reactions{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px;}
+.reaction-badge{padding:2px 7px;border-radius:20px;font-size:12px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;gap:3px;}
+.reaction-badge .rcount{font-size:10px;font-weight:700;color:var(--muted);}
+.sys-msg{text-align:center;font-size:12px;color:var(--muted);padding:5px 14px;margin:6px auto;background:rgba(255,255,255,0.03);border-radius:20px;border:1px solid var(--border);max-width:300px;}
+
+/* Emoji picker */
+.emoji-picker{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:8px;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;z-index:30;box-shadow:var(--shadow);animation:popIn .15s ease;}
+@keyframes popIn{from{opacity:0;transform:scale(0.9) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.emoji-picker span{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;border-radius:8px;transition:background .1s;}
+.emoji-picker span:hover{background:var(--surface2);}
+
+/* Input */
 #input-area{padding:10px 14px 14px;background:var(--surface);border-top:1px solid var(--border);flex-shrink:0;}
-.irow{display:flex;gap:8px;align-items:flex-end;}
-.iwrap{flex:1;display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:8px 12px;transition:border-color .2s;}
-.iwrap:focus-within{border-color:rgba(79,142,247,0.5);}
+.input-row{display:flex;gap:8px;align-items:flex-end;}
+.input-wrap{flex:1;display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:8px 12px;transition:border-color .2s;}
+.input-wrap:focus-within{border-color:rgba(79,142,247,0.5);}
 #msgInput{flex:1;background:none;border:none;outline:none;resize:none;font-family:inherit;font-size:14px;color:var(--text);line-height:1.4;max-height:100px;overflow-y:auto;min-height:22px;}
 #msgInput::placeholder{color:rgba(255,255,255,0.2);}
-.etrig{font-size:18px;cursor:pointer;opacity:0.5;transition:opacity .15s;flex-shrink:0;position:relative;}
-.etrig:hover{opacity:1;}
-.sbtn{width:42px;height:42px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;}
-.sbtn:hover{transform:scale(1.06);}
-.sbtn:active{transform:scale(0.95);}
-#typing{font-size:12px;color:var(--muted);padding:0 4px 5px;min-height:18px;font-style:italic;}
-.dots{display:inline-flex;gap:3px;align-items:center;margin-right:4px;}
-.dots span{width:4px;height:4px;border-radius:50%;background:var(--muted);animation:db 1.2s ease infinite;}
-.dots span:nth-child(2){animation-delay:.2s;}
-.dots span:nth-child(3){animation-delay:.4s;}
-@keyframes db{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-#callOv{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.92);display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;}
-#callOv.show{display:flex;}
-.vgrid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:700px;width:100%;}
-.vtile{position:relative;border-radius:16px;overflow:hidden;background:#111;border:2px solid var(--border);flex:1;min-width:140px;max-width:320px;aspect-ratio:4/3;}
-.vtile video{width:100%;height:100%;object-fit:cover;display:block;}
-.vlabel{position:absolute;bottom:8px;left:8px;font-size:11px;font-weight:700;background:rgba(0,0,0,0.6);padding:3px 8px;border-radius:8px;}
-.ccontrols{display:flex;gap:12px;}
-.cbtn{width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:all .15s;background:var(--surface2);}
-.cbtn.on{background:rgba(239,68,68,0.25);border:2px solid var(--red);}
-.cbtn.end{background:var(--red);color:#fff;}
-.cbtn:hover{transform:scale(1.1);}
-.cstatus{font-size:13px;color:var(--muted);font-weight:600;}
-#kickModal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);padding:24px;}
-#kickModal.show{display:flex;}
-.kcard{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px 24px;width:100%;max-width:320px;box-shadow:var(--shadow);text-align:center;animation:popIn .2s ease;}
-.kcard h3{font-size:18px;font-weight:800;margin-bottom:8px;}
-.kcard p{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5;}
-.kactions{display:flex;gap:10px;}
-.bcnl{flex:1;padding:11px;border:1px solid var(--border);border-radius:10px;background:none;color:var(--text);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;}
-.bcnl:hover{background:var(--surface2);}
-.bkick{flex:1;padding:11px;border:none;border-radius:10px;background:var(--red);color:#fff;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;}
+.emoji-trigger{font-size:18px;cursor:pointer;opacity:0.5;transition:opacity .15s;flex-shrink:0;position:relative;}
+.emoji-trigger:hover{opacity:1;}
+.send-btn{width:42px;height:42px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;}
+.send-btn:hover{transform:scale(1.06);}
+.send-btn:active{transform:scale(0.95);}
+#typing-indicator{font-size:12px;color:var(--muted);padding:0 4px 5px;min-height:18px;font-style:italic;}
+.dot-bounce{display:inline-flex;gap:3px;align-items:center;margin-right:4px;}
+.dot-bounce span{width:4px;height:4px;border-radius:50%;background:var(--muted);animation:dotB 1.2s ease infinite;}
+.dot-bounce span:nth-child(2){animation-delay:.2s;}
+.dot-bounce span:nth-child(3){animation-delay:.4s;}
+@keyframes dotB{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+
+/* Call overlay */
+#call-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.92);display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;}
+#call-overlay.show{display:flex;}
+.videos-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:700px;width:100%;}
+.video-tile{position:relative;border-radius:16px;overflow:hidden;background:#111;border:2px solid var(--border);flex:1;min-width:140px;max-width:320px;aspect-ratio:4/3;}
+.video-tile video{width:100%;height:100%;object-fit:cover;display:block;}
+.video-tile-label{position:absolute;bottom:8px;left:8px;font-size:11px;font-weight:700;background:rgba(0,0,0,0.6);padding:3px 8px;border-radius:8px;}
+.call-controls{display:flex;gap:12px;}
+.call-btn{width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:all .15s;background:var(--surface2);}
+.call-btn.on{background:rgba(239,68,68,0.25);border:2px solid var(--red);}
+.call-btn.end{background:var(--red);color:#fff;}
+.call-btn:hover{transform:scale(1.1);}
+.call-status{font-size:13px;color:var(--muted);font-weight:600;}
+
+/* Kick modal */
+#kick-modal{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);padding:24px;}
+#kick-modal.show{display:flex;}
+.kick-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px 24px;width:100%;max-width:320px;box-shadow:var(--shadow);text-align:center;animation:popIn .2s ease;}
+.kick-card h3{font-size:18px;font-weight:800;margin-bottom:8px;}
+.kick-card p{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5;}
+.kick-actions{display:flex;gap:10px;}
+.btn-cancel{flex:1;padding:11px;border:1px solid var(--border);border-radius:10px;background:none;color:var(--text);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;}
+.btn-cancel:hover{background:var(--surface2);}
+.btn-kick-confirm{flex:1;padding:11px;border:none;border-radius:10px;background:var(--red);color:#fff;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;}
+
+/* Toast */
 #toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 18px;font-size:13px;font-weight:600;z-index:500;opacity:0;transition:all .25s;pointer-events:none;white-space:nowrap;box-shadow:var(--shadow);}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 </style>
 </head>
 <body>
+
 <div id="toast"></div>
 
+<!-- ══ LANDING ══ -->
 <div id="landing">
-  <button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
+  <button class="lang-toggle" onclick="toggleLang()" id="langBtn">EN</button>
   <div class="brand">
     <div class="brand-icon">💬</div>
     <div class="brand-name"><span>Houmani</span> Chat</div>
-    <div class="brand-sub" id="bsub">غرف خاصة. محادثات حقيقية.</div>
+    <div class="brand-sub" id="brandSub">غرف خاصة. محادثات حقيقية.</div>
   </div>
   <div class="card">
     <div class="tabs">
-      <button class="tab active" id="tc" onclick="switchTab('c')">إنشاء غرفة</button>
-      <button class="tab" id="tj" onclick="switchTab('j')">الانضمام</button>
+      <button class="tab active" id="tabCreate" onclick="switchTab('create')">إنشاء غرفة</button>
+      <button class="tab" id="tabJoin" onclick="switchTab('join')">الانضمام</button>
     </div>
-    <div id="tbc">
-      <div class="field"><label id="ln">اسمك</label><input id="cname" placeholder="أدخل اسمك" maxlength="24" autocomplete="off"></div>
-      <div class="field"><label id="lr">اسم الغرفة</label><input id="rname" placeholder="مثال: عائلة هوماني..." maxlength="32" autocomplete="off"></div>
-      <div class="code-box">
-        <div class="code-label" id="lf">🔑 رمز الغرفة الدائم</div>
-        <div class="code-val">HOUMANI</div>
-        <div class="code-hint" id="lh">شاركه مع عائلتك مرة واحدة فقط</div>
+    <div id="tab-create">
+      <div class="field"><label id="lbl-name">اسمك</label><input type="text" id="createName" placeholder="أدخل اسمك" maxlength="24" autocomplete="off"></div>
+      <div class="field"><label id="lbl-room">اسم الغرفة</label><input type="text" id="roomName" placeholder="مثال: عائلة هوماني..." maxlength="32" autocomplete="off"></div>
+      <div class="fixed-code-box">
+        <div class="fixed-code-label" id="lbl-fixed">🔑 رمز الغرفة الدائم</div>
+        <div class="fixed-code-value">HOUMANI</div>
+        <div class="fixed-code-hint" id="lbl-hint">شاركه مع عائلتك مرة واحدة فقط</div>
       </div>
-      <button class="btn btn-primary" id="cbtn" onclick="createRoom()">إنشاء الغرفة</button>
-      <button class="btn-wa" onclick="shareWA()"><span>📲</span><span id="wat">مشاركة عبر واتساب</span></button>
+      <button class="btn btn-primary" id="createBtn" onclick="createRoom()">إنشاء الغرفة</button>
+      <button class="btn btn-whatsapp" onclick="shareWhatsApp()"><span>📲</span><span id="waText">مشاركة عبر واتساب</span></button>
     </div>
-    <div id="tbj" style="display:none">
-      <div class="field"><label id="ljn">اسمك</label><input id="jname" placeholder="أدخل اسمك" maxlength="24" autocomplete="off"></div>
-      <div class="field"><label id="ljc">رمز الغرفة</label>
-        <input id="jcode" placeholder="HOUMANI" maxlength="10" style="font-family:'Space Mono',monospace;font-size:18px;letter-spacing:4px;text-transform:uppercase" autocomplete="off">
+    <div id="tab-join" style="display:none">
+      <div class="field"><label id="lbl-jname">اسمك</label><input type="text" id="joinName" placeholder="أدخل اسمك" maxlength="24" autocomplete="off"></div>
+      <div class="field"><label id="lbl-jcode">رمز الغرفة</label>
+        <input type="text" id="joinCode" placeholder="HOUMANI" maxlength="10" style="font-family:'Space Mono',monospace;font-size:18px;letter-spacing:4px;text-transform:uppercase" autocomplete="off">
       </div>
-      <button class="btn btn-primary" id="jbtn" onclick="joinRoom()">انضم للغرفة</button>
+      <button class="btn btn-primary" id="joinBtn" onclick="joinRoom()">انضم للغرفة</button>
     </div>
   </div>
 </div>
 
+<!-- ══ APP ══ -->
 <div id="app">
   <div id="header">
-    <div class="hlogo">💬</div>
-    <div class="hinfo">
-      <div class="hroom" id="hroom">Houmani Chat</div>
-      <div class="hcode" onclick="copyCode()"><span id="hcode">HOUMANI</span> <span style="font-size:10px;opacity:0.5">📋</span></div>
+    <div class="header-logo">💬</div>
+    <div class="header-info">
+      <div class="header-room" id="headerRoom">Houmani Chat</div>
+      <div class="header-code" onclick="copyCode()"><span id="codeSpan">HOUMANI</span> <span style="font-size:10px;opacity:0.5">📋</span></div>
     </div>
-    <div class="hactions">
-      <button class="ibtn" id="callBtn" onclick="toggleCall()">📹</button>
-      <button class="ibtn danger" onclick="leaveRoom()">🚪</button>
+    <div class="header-actions">
+      <button class="icon-btn" id="callBtn" onclick="toggleCall()">📹</button>
+      <button class="icon-btn danger" onclick="leaveRoom()">🚪</button>
     </div>
   </div>
+
   <div class="online-bar">
-    <div class="odot"></div>
-    <div class="otext" id="otext">الغرفة نشطة دائماً ✅</div>
-    <div class="ocount" id="ocount"></div>
+    <div class="online-dot"></div>
+    <div class="online-text" id="onlineText">الغرفة نشطة دائماً ✅</div>
+    <div class="online-count" id="onlineCount"></div>
   </div>
-  <div class="share-bar" onclick="shareWA()">
+
+  <div class="share-banner" onclick="shareWhatsApp()">
     <span>📲</span>
-    <span class="sbar-text" id="sbtext">شارك رمز الغرفة مع عائلتك</span>
-    <span class="sbar-code">HOUMANI</span>
+    <span class="share-banner-text" id="shareBannerText">شارك رمز الغرفة مع عائلتك</span>
+    <span class="share-banner-code">HOUMANI</span>
   </div>
-  <div id="members-bar">
-    <div id="members-bar-header">
-      <span id="members-bar-title">الأعضاء</span>
-      <div id="members-bar-counts">
-        <span class="count-online" id="count-online">🟢 0</span>
-        <span class="count-offline" id="count-offline">🔴 0</span>
-      </div>
-    </div>
-    <div id="members-bar-list"></div>
+
+  <div id="members-bar"></div>
+
+  <div id="messages-wrap" onclick="closeAllPickers()">
+    <div class="msg-day"><span id="todayLabel">اليوم</span></div>
   </div>
-  <div id="msgs" onclick="closePickers()">
-    <div class="day-div"><span id="todayLbl">اليوم</span></div>
-  </div>
-  <div id="typing"></div>
+
+  <div id="typing-indicator"></div>
+
   <div id="input-area">
-    <div class="irow">
-      <div class="iwrap">
-        <div class="etrig" onclick="toggleEmoji(event)">😊
-          <div class="epicker" id="mainEmoji" style="display:none;bottom:44px;right:-8px;">
-            <span onclick="ins('😄')">😄</span><span onclick="ins('😂')">😂</span><span onclick="ins('🥰')">🥰</span>
-            <span onclick="ins('😎')">😎</span><span onclick="ins('🤔')">🤔</span><span onclick="ins('😭')">😭</span>
-            <span onclick="ins('🔥')">🔥</span><span onclick="ins('💯')">💯</span><span onclick="ins('👏')">👏</span>
-            <span onclick="ins('🎉')">🎉</span><span onclick="ins('❤️')">❤️</span><span onclick="ins('💀')">💀</span>
-            <span onclick="ins('👍')">👍</span><span onclick="ins('👎')">👎</span><span onclick="ins('🚀')">🚀</span>
+    <div class="input-row">
+      <div class="input-wrap">
+        <div class="emoji-trigger" onclick="toggleMainEmoji(event)">😊
+          <div class="emoji-picker" id="mainEmoji" style="display:none;bottom:44px;right:-8px;">
+            <span onclick="insertEmoji('😄')">😄</span><span onclick="insertEmoji('😂')">😂</span>
+            <span onclick="insertEmoji('🥰')">🥰</span><span onclick="insertEmoji('😎')">😎</span>
+            <span onclick="insertEmoji('🤔')">🤔</span><span onclick="insertEmoji('😭')">😭</span>
+            <span onclick="insertEmoji('🔥')">🔥</span><span onclick="insertEmoji('💯')">💯</span>
+            <span onclick="insertEmoji('👏')">👏</span><span onclick="insertEmoji('🎉')">🎉</span>
+            <span onclick="insertEmoji('❤️')">❤️</span><span onclick="insertEmoji('💀')">💀</span>
+            <span onclick="insertEmoji('👍')">👍</span><span onclick="insertEmoji('👎')">👎</span>
+            <span onclick="insertEmoji('🚀')">🚀</span>
           </div>
         </div>
-        <textarea id="msgInput" rows="1" placeholder="رسالة..." onkeydown="onKey(event)" oninput="onType()"></textarea>
+        <textarea id="msgInput" rows="1" placeholder="رسالة..." onkeydown="handleKey(event)" oninput="handleTyping()"></textarea>
       </div>
-      <button class="sbtn" onclick="sendMsg()">➤</button>
+      <button class="send-btn" onclick="sendMessage()">➤</button>
     </div>
   </div>
 </div>
 
-<div id="callOv">
-  <div class="cstatus" id="cstat">جارٍ الاتصال...</div>
-  <div class="vgrid" id="vgrid">
-    <div class="vtile" id="localTile">
-      <video id="localVid" autoplay muted playsinline></video>
-      <div class="vlabel" id="localLbl">أنت</div>
+<!-- ══ CALL OVERLAY ══ -->
+<div id="call-overlay">
+  <div class="call-status" id="callStatus">جارٍ الاتصال...</div>
+  <div class="videos-grid" id="videosGrid">
+    <div class="video-tile" id="localTile">
+      <video id="localVideo" autoplay muted playsinline></video>
+      <div class="video-tile-label" id="localLabel">أنت</div>
     </div>
   </div>
-  <div class="ccontrols">
-    <button class="cbtn" id="muteBtn" onclick="toggleMute()">🎤</button>
-    <button class="cbtn" id="vidBtn" onclick="toggleVid()">📷</button>
-    <button class="cbtn end" onclick="endCall()">📵</button>
+  <div class="call-controls">
+    <button class="call-btn" id="muteBtn" onclick="toggleMute()">🎤</button>
+    <button class="call-btn" id="videoBtn" onclick="toggleVideo()">📷</button>
+    <button class="call-btn end" onclick="endCall()">📵</button>
   </div>
 </div>
 
-<div id="kickModal">
-  <div class="kcard">
+<!-- ══ KICK MODAL ══ -->
+<div id="kick-modal">
+  <div class="kick-card">
     <div style="font-size:40px;margin-bottom:10px">🚫</div>
-    <h3 id="ktitle">إزالة عضو</h3>
-    <p>هل تريد إزالة <b id="kname"></b> من الغرفة؟</p>
-    <div class="kactions">
-      <button class="bcnl" onclick="closeKick()">إلغاء</button>
-      <button class="bkick" onclick="doKick()">إزالة</button>
+    <h3 id="kickTitle">إزالة عضو</h3>
+    <p>هل تريد إزالة <b id="kickName"></b> من الغرفة؟</p>
+    <div class="kick-actions">
+      <button class="btn-cancel" onclick="closeKick()">إلغاء</button>
+      <button class="btn-kick-confirm" onclick="confirmKick()">إزالة</button>
     </div>
   </div>
 </div>
 
+<!-- Firebase SDK -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, push, onValue, set, remove, onDisconnect, serverTimestamp, off, get }
+import { getDatabase, ref, push, onValue, set, remove, onDisconnect, serverTimestamp, off }
   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import Peer from "https://esm.sh/peerjs@1.5.2";
 
-const FB = { apiKey:"AIzaSyAOfntzRTIIuqakSpQTYhwuRE0qE_iaGFs", authDomain:"houmani-chat.firebaseapp.com",
-  databaseURL:"https://houmani-chat-default-rtdb.firebaseio.com", projectId:"houmani-chat",
-  storageBucket:"houmani-chat.firebasestorage.app", messagingSenderId:"748856248873",
-  appId:"1:748856248873:web:78696dac32839715e3aa38" };
-const app = initializeApp(FB);
-const db  = getDatabase(app);
+// ── FIREBASE CONFIG ──────────────────────────────────────────────
+const firebaseConfig = {
+  apiKey: "AIzaSyAOfntzRTIIuqakSpQTYhwuRE0qE_iaGFs",
+  authDomain: "houmani-chat.firebaseapp.com",
+  databaseURL: "https://houmani-chat-default-rtdb.firebaseio.com",
+  projectId: "houmani-chat",
+  storageBucket: "houmani-chat.firebasestorage.app",
+  messagingSenderId: "748856248873",
+  appId: "1:748856248873:web:78696dac32839715e3aa38"
+};
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getDatabase(firebaseApp);
 
-const CODE   = 'HOUMANI';
-const RPATH  = 'rooms/'+CODE;
-const COLORS = ['#4f8ef7','#7c5cf6','#22c55e','#f59e0b','#ef4444','#06b6d4','#ec4899','#84cc16','#f97316','#8b5cf6'];
-const REACTS = ['👍','❤️','😂','😮','😢','🔥','💯','👏'];
+// ── CONSTANTS ────────────────────────────────────────────────────
+const FIXED_CODE = 'HOUMANI';
+const ROOM_PATH  = 'rooms/' + FIXED_CODE;
+const QUICK_REACTIONS = ['👍','❤️','😂','😮','😢','🔥','💯','👏'];
+const AVATAR_COLORS = ['#4f8ef7','#7c5cf6','#22c55e','#f59e0b','#ef4444','#06b6d4','#ec4899','#84cc16','#f97316','#8b5cf6'];
 
-let myName='', myColor='', myId='', isHost=false, lang='ar';
-let typTimer=null, msgKeys=new Set(), kickId=null;
-let localStream=null, peer=null, calls={}, isMuted=false, isVidOff=false;
+// ── STATE ────────────────────────────────────────────────────────
+let myName = '', myColor = '', myId = '', isHost = false;
+let lang = 'ar';
+let typingTimer = null, typingRenderTimer = null;
+let localStream = null, peer = null, calls = {}, peerConns = {};
+let isMuted = false, isVideoOff = false;
+let kickTargetId = null;
+let messageKeys = new Set(); // prevent duplicate renders
 
+// ── HELPERS ──────────────────────────────────────────────────────
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function getColor(name) { let h=0; for(const c of name) h=(h*31+c.charCodeAt(0))&0xffffffff; return AVATAR_COLORS[Math.abs(h)%AVATAR_COLORS.length]; }
+function getInitials(name) { return name.trim().split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2)||'?'; }
+function fmtTime(ts) { return new Date(ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); }
+function escHtml(t) { const d=document.createElement('div');d.textContent=t;return d.innerHTML; }
+
+// ── LANGUAGE ────────────────────────────────────────────────────
 const T = {
-  ar:{ c:'إنشاء غرفة', j:'الانضمام', ln:'اسمك', lr:'اسم الغرفة', ljn:'اسمك', ljc:'رمز الغرفة',
-       lf:'🔑 رمز الغرفة الدائم', lh:'شاركه مع عائلتك مرة واحدة فقط',
-       cb:'إنشاء الغرفة', jb:'انضم للغرفة', wat:'مشاركة عبر واتساب',
-       sb:'شارك رمز الغرفة مع عائلتك', ot:'الغرفة نشطة دائماً ✅',
-       td:'اليوم', ph:'رسالة...',
-       wa:(c,u)=>`مرحباً! انضم إلى هوماني شات 💬\n🔑 الرمز: *${c}*\n🔗 الرابط: ${u}`,
-       t1:(n)=>`${n} يكتب`, tn:(n)=>`${n} يكتبون`,
-       kicked:'تم إزالتك من الغرفة من قِبل المسؤول',
-       mem:(n)=>`${n} متصل`, you:'أنت', ktitle:'إزالة عضو',
-       creating:'جارٍ الإنشاء...', joining:'جارٍ الانضمام...', noroom:'الغرفة غير موجودة. أنشئها أولاً.',
-       calling:'متصل', copied:'✅ تم نسخ الرمز!', kicked2:'تمت إزالته',
+  ar:{ create:'إنشاء غرفة', join:'الانضمام', name:'اسمك', room:'اسم الغرفة',
+       jname:'اسمك', jcode:'رمز الغرفة', fixed:'🔑 رمز الغرفة الدائم',
+       hint:'شاركه مع عائلتك مرة واحدة فقط', createBtn:'إنشاء الغرفة', joinBtn:'انضم للغرفة',
+       wa:'مشاركة عبر واتساب', banner:'شارك رمز الغرفة مع عائلتك',
+       online:'الغرفة نشطة دائماً ✅', today:'اليوم', msg:'رسالة...',
+       waMsg:(c,u)=>`مرحباً! انضم إلى غرفة هوماني شات 💬\n🔑 الرمز: *${c}*\n🔗 الرابط: ${u}`,
+       typing1:(n)=>`${n} يكتب`, typingN:(n)=>`${n} يكتبون`,
+       kicked:'تم إزالتك من الغرفة من قِبل المسؤول', remove:'إزالة عضو',
+       members:(n)=>`${n} عضو متصل`,
   },
-  en:{ c:'Create Room', j:'Join Room', ln:'Your Name', lr:'Room Name', ljn:'Your Name', ljc:'Room Code',
-       lf:'🔑 Permanent Room Code', lh:'Share with family once — never changes',
-       cb:'Create Room', jb:'Join Room', wat:'Share via WhatsApp',
-       sb:'Share room code with your family', ot:'Room always online ✅',
-       td:'Today', ph:'Message...',
-       wa:(c,u)=>`Hello! Join Houmani Chat 💬\n🔑 Code: *${c}*\n🔗 Link: ${u}`,
-       t1:(n)=>`${n} is typing`, tn:(n)=>`${n} are typing`,
-       kicked:'You were removed from the room by the host.',
-       mem:(n)=>`${n} online`, you:'you', ktitle:'Remove Member',
-       creating:'Creating...', joining:'Joining...', noroom:'Room not found. Create it first.',
-       calling:'In call', copied:'✅ Code copied!', kicked2:'removed',
+  en:{ create:'Create Room', join:'Join Room', name:'Your Name', room:'Room Name',
+       jname:'Your Name', jcode:'Room Code', fixed:'🔑 Permanent Room Code',
+       hint:'Share with family once — never changes', createBtn:'Create Room', joinBtn:'Join Room',
+       wa:'Share via WhatsApp', banner:'Share room code with your family',
+       online:'Room always online ✅', today:'Today', msg:'Message...',
+       waMsg:(c,u)=>`Hello! Join Houmani Chat 💬\n🔑 Code: *${c}*\n🔗 Link: ${u}`,
+       typing1:(n)=>`${n} is typing`, typingN:(n)=>`${n} are typing`,
+       kicked:'You were removed from the room by the host.', remove:'Remove Member',
+       members:(n)=>`${n} member(s) online`,
   }
 };
 
-function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
-function col(n){ let h=0; for(const c of n) h=(h*31+c.charCodeAt(0))&0xffffffff; return COLORS[Math.abs(h)%COLORS.length]; }
-function ini(n){ return n.trim().split(' ').map(w=>w[0]||'').join('').toUpperCase().slice(0,2)||'?'; }
-function fmt(ts){ return new Date(ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); }
-function esc(t){ const d=document.createElement('div');d.textContent=t;return d.innerHTML; }
-function scroll(){ const w=document.getElementById('msgs');w.scrollTop=w.scrollHeight; }
-
-window.toggleLang = ()=>{
-  lang=lang==='ar'?'en':'ar';
-  document.documentElement.lang=lang;
-  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-  document.getElementById('langBtn').textContent=lang==='ar'?'EN':'ع';
+window.toggleLang = function() {
+  lang = lang==='ar'?'en':'ar';
+  document.documentElement.lang = lang;
+  document.documentElement.dir  = lang==='ar'?'rtl':'ltr';
+  document.getElementById('langBtn').textContent = lang==='ar'?'EN':'ع';
   applyLang();
 };
-function applyLang(){
-  const t=T[lang];
-  document.getElementById('tc').textContent=t.c;
-  document.getElementById('tj').textContent=t.j;
-  document.getElementById('ln').textContent=t.ln;
-  document.getElementById('lr').textContent=t.lr;
-  document.getElementById('ljn').textContent=t.ljn;
-  document.getElementById('ljc').textContent=t.ljc;
-  document.getElementById('lf').textContent=t.lf;
-  document.getElementById('lh').textContent=t.lh;
-  document.getElementById('cbtn').textContent=t.cb;
-  document.getElementById('jbtn').textContent=t.jb;
-  document.getElementById('wat').textContent=t.wat;
-  document.getElementById('sbtext').textContent=t.sb;
-  document.getElementById('otext').textContent=t.ot;
-  document.getElementById('todayLbl').textContent=t.td;
-  document.getElementById('msgInput').placeholder=t.ph;
-  document.getElementById('ktitle').textContent=t.ktitle;
-  const mbt=document.getElementById('members-bar-title');
-  if(mbt) mbt.textContent=lang==='ar'?'الأعضاء':'Members';
+
+function applyLang() {
+  const t = T[lang];
+  document.getElementById('tabCreate').textContent    = t.create;
+  document.getElementById('tabJoin').textContent      = t.join;
+  document.getElementById('lbl-name').textContent     = t.name;
+  document.getElementById('lbl-room').textContent     = t.room;
+  document.getElementById('lbl-jname').textContent    = t.jname;
+  document.getElementById('lbl-jcode').textContent    = t.jcode;
+  document.getElementById('lbl-fixed').textContent    = t.fixed;
+  document.getElementById('lbl-hint').textContent     = t.hint;
+  document.getElementById('createBtn').textContent    = t.createBtn;
+  document.getElementById('joinBtn').textContent      = t.joinBtn;
+  document.getElementById('waText').textContent       = t.wa;
+  document.getElementById('shareBannerText').textContent = t.banner;
+  document.getElementById('onlineText').textContent   = t.online;
+  document.getElementById('todayLabel').textContent   = t.today;
+  document.getElementById('msgInput').placeholder     = t.msg;
+  document.getElementById('kickTitle').textContent    = t.remove;
 }
 applyLang();
 
-window.switchTab = tab=>{
-  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',(tab==='c'&&i===0)||(tab==='j'&&i===1)));
-  document.getElementById('tbc').style.display=tab==='c'?'':'none';
-  document.getElementById('tbj').style.display=tab==='j'?'':'none';
+// ── TABS ────────────────────────────────────────────────────────
+window.switchTab = function(tab) {
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',(tab==='create'&&i===0)||(tab==='join'&&i===1)));
+  document.getElementById('tab-create').style.display = tab==='create'?'':'none';
+  document.getElementById('tab-join').style.display   = tab==='join'  ?'':'none';
 };
 
-window.toast = (msg,dur=2500)=>{
-  const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');
+// ── TOAST ───────────────────────────────────────────────────────
+window.toast = function(msg, dur=2500) {
+  const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show');
   setTimeout(()=>el.classList.remove('show'),dur);
 };
 
-window.shareWA = ()=>{
-  window.open('https://wa.me/?text='+encodeURIComponent(T[lang].wa(CODE,location.href)),'_blank');
+// ── WHATSAPP ────────────────────────────────────────────────────
+window.shareWhatsApp = function() {
+  const url = window.location.href;
+  window.open('https://wa.me/?text='+encodeURIComponent(T[lang].waMsg(FIXED_CODE,url)),'_blank');
 };
 
-window.copyCode = ()=>{
-  navigator.clipboard?.writeText(CODE).then(()=>toast(T[lang].copied));
+window.copyCode = function() {
+  navigator.clipboard?.writeText(FIXED_CODE).then(()=>toast('✅ تم نسخ الرمز!'));
 };
 
-// ── CREATE ────────────────────────────────────────────────────────
-window.createRoom = ()=>{
-  const name=document.getElementById('cname').value.trim();
-  const room=document.getElementById('rname').value.trim();
-  if(!name){toast('⚠️ '+T[lang].ln);return;}
-  if(!room){toast('⚠️ '+T[lang].lr);return;}
-  myName=name; myColor=col(name); myId=uid(); isHost=true;
-  document.getElementById('cbtn').disabled=true;
-  document.getElementById('cbtn').textContent=T[lang].creating;
-  set(ref(db,RPATH+'/meta'),{name:room,host:myId,at:serverTimestamp()});
+// ══ CREATE ROOM ══════════════════════════════════════════════════
+window.createRoom = function() {
+  const name = document.getElementById('createName').value.trim();
+  const room = document.getElementById('roomName').value.trim();
+  if (!name) { toast('⚠️ ' + (lang==='ar'?'أدخل اسمك':'Enter your name')); return; }
+  if (!room)  { toast('⚠️ ' + (lang==='ar'?'أدخل اسم الغرفة':'Enter room name')); return; }
+  myName = name; myColor = getColor(name); myId = uid(); isHost = true;
+  document.getElementById('createBtn').disabled = true;
+  document.getElementById('createBtn').textContent = lang==='ar'?'جارٍ الإنشاء...':'Creating...';
+  // Set room meta
+  set(ref(db, ROOM_PATH+'/meta'), { name: room, host: myId, createdAt: serverTimestamp() });
   enterRoom(room);
 };
 
-// ── JOIN ──────────────────────────────────────────────────────────
-window.joinRoom = ()=>{
-  const name=document.getElementById('jname').value.trim();
-  const code=(document.getElementById('jcode').value.trim().toUpperCase())||CODE;
-  if(!name){toast('⚠️ '+T[lang].ljn);return;}
-  if(code!==CODE){toast('❌ '+(lang==='ar'?'رمز خاطئ':'Wrong code'));return;}
-  myName=name; myColor=col(name); myId=uid(); isHost=false;
-  document.getElementById('jbtn').disabled=true;
-  document.getElementById('jbtn').textContent=T[lang].joining;
-  get(ref(db,RPATH+'/meta')).then(snap=>{
-    if(!snap.exists()){
-      toast('❌ '+T[lang].noroom);
-      document.getElementById('jbtn').disabled=false;
-      document.getElementById('jbtn').textContent=T[lang].jb;
+// ══ JOIN ROOM ════════════════════════════════════════════════════
+window.joinRoom = function() {
+  const name = document.getElementById('joinName').value.trim();
+  const code = document.getElementById('joinCode').value.trim().toUpperCase() || FIXED_CODE;
+  if (!name) { toast('⚠️ ' + (lang==='ar'?'أدخل اسمك':'Enter your name')); return; }
+  if (code !== FIXED_CODE) { toast('❌ ' + (lang==='ar'?'رمز خاطئ':'Wrong code')); return; }
+  myName = name; myColor = getColor(name); myId = uid(); isHost = false;
+  document.getElementById('joinBtn').disabled = true;
+  document.getElementById('joinBtn').textContent = lang==='ar'?'جارٍ الانضمام...':'Joining...';
+  // check room exists
+  onValue(ref(db, ROOM_PATH+'/meta'), snap => {
+    if (!snap.exists()) {
+      toast('❌ ' + (lang==='ar'?'الغرفة غير موجودة. أنشئها أولاً':'Room not found. Create it first.'));
+      document.getElementById('joinBtn').disabled = false;
+      document.getElementById('joinBtn').textContent = T[lang].joinBtn;
       return;
     }
+    off(ref(db, ROOM_PATH+'/meta'));
     enterRoom(snap.val().name);
-  });
+  }, { onlyOnce: true });
 };
 
-// ── ENTER ROOM ────────────────────────────────────────────────────
-function enterRoom(roomName){
-  const presRef=ref(db,RPATH+'/presence/'+myId);
-  set(presRef,{name:myName,color:myColor,at:serverTimestamp()});
-  onDisconnect(presRef).remove();
-  onDisconnect(ref(db,RPATH+'/typing/'+myId)).remove();
+// ══ ENTER ROOM ═══════════════════════════════════════════════════
+function enterRoom(roomName) {
+  // Register presence
+  const presenceRef = ref(db, ROOM_PATH+'/presence/'+myId);
+  set(presenceRef, { name: myName, color: myColor, joinedAt: serverTimestamp() });
+  onDisconnect(presenceRef).remove();
 
-  // kicked listener
-  onValue(ref(db,RPATH+'/kicks/'+myId),snap=>{
-    if(snap.exists()){alert(T[lang].kicked);location.reload();}
+  // Listen for kick
+  onValue(ref(db, ROOM_PATH+'/kicks/'+myId), snap => {
+    if (snap.exists()) { alert(T[lang].kicked); location.reload(); }
   });
 
+  // Open UI
   document.getElementById('landing').classList.add('gone');
   setTimeout(()=>document.getElementById('landing').style.display='none',320);
   document.getElementById('app').classList.add('show');
-  document.getElementById('hroom').textContent=roomName;
+  document.getElementById('headerRoom').textContent = roomName;
+  document.getElementById('codeSpan').textContent = FIXED_CODE;
   document.getElementById('msgInput').focus();
 
-  // presence
-  onValue(ref(db,RPATH+'/presence'),snap=>{
-    const m=snap.val()||{};
-    renderMembers(m);
-    document.getElementById('ocount').textContent=T[lang].mem(Object.keys(m).length);
+  // Listen to presence
+  onValue(ref(db, ROOM_PATH+'/presence'), snap => {
+    const members = snap.val() || {};
+    renderMembers(members);
+    const count = Object.keys(members).length;
+    document.getElementById('onlineCount').textContent = T[lang].members(count);
   });
 
-  // messages
-  onValue(ref(db,RPATH+'/messages'),snap=>{
-    const msgs=snap.val()||{};
-    Object.entries(msgs).forEach(([k,v])=>{
-      if(!msgKeys.has(k)){msgKeys.add(k);renderMsg(v,k);}
-      else{ const el=document.querySelector(`[data-key="${k}"]`); if(el) updReacts(el,v.reactions||{}); }
+  // Listen to messages
+  onValue(ref(db, ROOM_PATH+'/messages'), snap => {
+    const msgs = snap.val() || {};
+    Object.entries(msgs).forEach(([key, msg]) => {
+      if (!messageKeys.has(key)) {
+        messageKeys.add(key);
+        renderMessage(msg, key);
+      } else {
+        // update reactions
+        const el = document.querySelector(`[data-key="${key}"]`);
+        if (el) updateReactionsUI(el, msg.reactions||{});
+      }
     });
-    scroll();
+    scrollBottom();
   });
 
-  // typing
-  onValue(ref(db,RPATH+'/typing'),snap=>{
-    const t=snap.val()||{};
-    const names=Object.entries(t).filter(([id,v])=>id!==myId&&v).map(([,v])=>v);
+  // Listen to typing
+  onValue(ref(db, ROOM_PATH+'/typing'), snap => {
+    const typing = snap.val() || {};
+    const names = Object.entries(typing).filter(([id,v])=>id!==myId&&v).map(([,v])=>v);
     renderTyping(names);
   });
+
+  // Init WebRTC peer for calls
+  initPeer();
 }
 
-// ── MEMBERS ───────────────────────────────────────────────────────
-function renderMembers(onlineMembers){
-  const list=document.getElementById('members-bar-list');
-  list.innerHTML='';
-
-  // load all known members from Firebase
-  get(ref(db,RPATH+'/allMembers')).then(snap=>{
-    const all=snap.val()||{};
-    // merge online into all
-    Object.entries(onlineMembers).forEach(([id,info])=>{ all[id]=info; });
-    // save any new online members
-    Object.entries(onlineMembers).forEach(([id,info])=>{
-      set(ref(db,RPATH+'/allMembers/'+id),{name:info.name,color:info.color});
-    });
-
-    const onlineIds = new Set(Object.keys(onlineMembers));
-    let onlineCount=0, offlineCount=0;
-
-    // sort: online first, then offline
-    const sorted = Object.entries(all).sort(([aid],[bid])=>{
-      const ao=onlineIds.has(aid), bo=onlineIds.has(bid);
-      if(ao&&!bo)return -1; if(!ao&&bo)return 1; return 0;
-    });
-
-    sorted.forEach(([id,info])=>{
-      const isMe=id===myId;
-      const isOnline=onlineIds.has(id);
-      if(isOnline)onlineCount++; else offlineCount++;
-
-      const chip=document.createElement('div');
-      chip.className='mchip'+(isMe?' mself':'')+(isOnline?'':' offline');
-      chip.innerHTML=`
-        <div class="mavatar" style="background:${info.color}22;color:${info.color}">
-          ${ini(info.name)}
-          <div class="mstatus ${isOnline?'online':'offline'}"></div>
-        </div>
-        <span>${esc(info.name)}${isMe?' ('+T[lang].you+')':''}</span>
-        ${isHost&&!isMe&&isOnline?`<button class="kbtn" onclick="openKick('${id}','${esc(info.name)}')">✕</button>`:''}
-      `;
-      list.appendChild(chip);
-    });
-
-    document.getElementById('count-online').textContent  = '🟢 '+onlineCount;
-    document.getElementById('count-offline').textContent = '🔴 '+offlineCount;
-    document.getElementById('ocount').textContent = T[lang].mem(onlineCount);
-
-    // update title lang
-    document.getElementById('members-bar-title').textContent = lang==='ar'?'الأعضاء':'Members';
+// ══ MEMBERS ══════════════════════════════════════════════════════
+function renderMembers(members) {
+  const bar = document.getElementById('members-bar');
+  bar.innerHTML = '';
+  Object.entries(members).forEach(([id, info]) => {
+    const isMe = id === myId;
+    const chip = document.createElement('div');
+    chip.className = 'member-chip' + (isMe?' member-self':'');
+    chip.innerHTML = `
+      <div class="member-avatar" style="background:${info.color}22;color:${info.color}">${getInitials(info.name)}</div>
+      <span>${info.name}${isMe?' ('+( lang==='ar'?'أنت':'you')+')':''}</span>
+      <div class="member-status"></div>
+      ${isHost&&!isMe?`<button class="kick-btn" onclick="openKick('${id}','${info.name}')">✕</button>`:''}
+    `;
+    bar.appendChild(chip);
   });
 }
 
-// ── MESSAGES ──────────────────────────────────────────────────────
-window.sendMsg = ()=>{
-  const inp=document.getElementById('msgInput');
-  const text=inp.value.trim();
-  if(!text)return;
-  inp.value=''; autoResize(inp);
-  set(ref(db,RPATH+'/typing/'+myId),null);
-  push(ref(db,RPATH+'/messages'),{author:myName,authorId:myId,color:myColor,text,time:Date.now(),reactions:{}});
+// ══ MESSAGES ═════════════════════════════════════════════════════
+window.sendMessage = function() {
+  const inp = document.getElementById('msgInput');
+  const text = inp.value.trim();
+  if (!text) return;
+  inp.value = ''; autoResize(inp);
+  // clear typing
+  set(ref(db, ROOM_PATH+'/typing/'+myId), null);
+
+  push(ref(db, ROOM_PATH+'/messages'), {
+    author: myName, authorId: myId, color: myColor,
+    text, time: Date.now(), reactions: {}
+  });
 };
 
-function renderMsg(msg,key){
-  const wrap=document.getElementById('msgs');
-  const isMe=msg.authorId===myId;
-  const div=document.createElement('div');
-  div.className='msg'+(isMe?' mine':'');
-  div.dataset.key=key;
-  div.innerHTML=`
-    <div class="mavtr" style="background:${msg.color}22;color:${msg.color}">${ini(msg.author)}</div>
-    <div class="mbody">
-      <div class="mmeta">
-        ${!isMe?`<span class="mname" style="color:${msg.color}">${esc(msg.author)}</span>`:''}
-        <span class="mtime">${fmt(msg.time)}</span>
+function renderMessage(msg, key) {
+  const wrap = document.getElementById('messages-wrap');
+  const isMe = msg.authorId === myId;
+  const div = document.createElement('div');
+  div.className = 'msg' + (isMe?' mine':'');
+  div.dataset.key = key;
+  div.innerHTML = `
+    <div class="msg-avatar" style="background:${msg.color}22;color:${msg.color}">${getInitials(msg.author)}</div>
+    <div class="msg-body">
+      <div class="msg-meta">
+        ${!isMe?`<span class="msg-name" style="color:${msg.color}">${escHtml(msg.author)}</span>`:''}
+        <span class="msg-time">${fmtTime(msg.time)}</span>
       </div>
-      <div class="mbubble">
-        ${esc(msg.text)}
-        <div class="rbtn" onclick="openRP(event,'${key}')">😊</div>
+      <div class="msg-bubble">
+        ${escHtml(msg.text)}
+        <div class="react-btn" onclick="openReactPicker(event,'${key}')">😊</div>
       </div>
-      <div class="reacts-wrap"></div>
+      <div class="reactions-wrap"></div>
     </div>`;
   wrap.appendChild(div);
-  updReacts(div,msg.reactions||{});
+  updateReactionsUI(div, msg.reactions||{});
 }
 
-// ── REACTIONS ─────────────────────────────────────────────────────
-window.openRP = (e,key)=>{
-  e.stopPropagation(); closePickers();
-  const bubble=e.currentTarget.parentElement;
-  let p=bubble.querySelector('.rpick');
-  if(!p){
-    p=document.createElement('div');
-    p.className='epicker rpick';
-    p.style.cssText='bottom:28px;right:0;position:absolute;';
-    REACTS.forEach(em=>{
-      const sp=document.createElement('span');sp.textContent=em;
-      sp.onclick=ev=>{ev.stopPropagation();set(ref(db,RPATH+'/messages/'+key+'/reactions/'+myId),em);closePickers();};
-      p.appendChild(sp);
+function scrollBottom() {
+  const w = document.getElementById('messages-wrap');
+  w.scrollTop = w.scrollHeight;
+}
+
+// ── REACTIONS ────────────────────────────────────────────────────
+window.openReactPicker = function(e, key) {
+  e.stopPropagation(); closeAllPickers();
+  const bubble = e.currentTarget.parentElement;
+  let picker = bubble.querySelector('.rpicker');
+  if (!picker) {
+    picker = document.createElement('div');
+    picker.className = 'emoji-picker rpicker';
+    picker.style.cssText = 'bottom:28px;right:0;position:absolute;';
+    QUICK_REACTIONS.forEach(em => {
+      const sp = document.createElement('span');
+      sp.textContent = em;
+      sp.onclick = ev => { ev.stopPropagation(); addReaction(key,em); closeAllPickers(); };
+      picker.appendChild(sp);
     });
     bubble.style.position='relative';
-    bubble.appendChild(p);
+    bubble.appendChild(picker);
   }
-  p.style.display='grid';
+  picker.style.display='grid';
 };
 
-function updReacts(el,reactions){
-  const wrap=el.querySelector('.reacts-wrap');if(!wrap)return;
-  const c={};Object.values(reactions).forEach(e=>{c[e]=(c[e]||0)+1;});
-  wrap.innerHTML=Object.entries(c).map(([e,n])=>`<span class="rbadge"><span>${e}</span><span class="rc">${n}</span></span>`).join('');
+function addReaction(key, emoji) {
+  const rRef = ref(db, ROOM_PATH+'/messages/'+key+'/reactions/'+myId);
+  set(rRef, emoji);
 }
 
-window.closePickers = ()=>{
-  document.querySelectorAll('.rpick').forEach(p=>p.style.display='none');
+function updateReactionsUI(el, reactions) {
+  const wrap = el.querySelector('.reactions-wrap');
+  if (!wrap) return;
+  // count
+  const counts = {};
+  Object.values(reactions).forEach(e => { counts[e]=(counts[e]||0)+1; });
+  wrap.innerHTML = Object.entries(counts).map(([e,n])=>
+    `<span class="reaction-badge"><span>${e}</span><span class="rcount">${n}</span></span>`
+  ).join('');
+}
+
+window.closeAllPickers = function() {
+  document.querySelectorAll('.rpicker').forEach(p=>p.style.display='none');
   document.getElementById('mainEmoji').style.display='none';
 };
 
-window.toggleEmoji = e=>{
+// ── EMOJI INPUT ──────────────────────────────────────────────────
+window.toggleMainEmoji = function(e) {
   e.stopPropagation();
   const p=document.getElementById('mainEmoji');
   p.style.display=p.style.display==='none'?'grid':'none';
 };
-window.ins = em=>{
-  const i=document.getElementById('msgInput');i.value+=em;i.focus();
+window.insertEmoji = function(em) {
+  const inp=document.getElementById('msgInput'); inp.value+=em; inp.focus();
   document.getElementById('mainEmoji').style.display='none';
 };
 
-// ── TYPING ────────────────────────────────────────────────────────
-window.onType = ()=>{
+// ── TYPING ──────────────────────────────────────────────────────
+window.handleTyping = function() {
   autoResize(document.getElementById('msgInput'));
-  set(ref(db,RPATH+'/typing/'+myId),myName);
-  if(typTimer)clearTimeout(typTimer);
-  typTimer=setTimeout(()=>set(ref(db,RPATH+'/typing/'+myId),null),3000);
+  set(ref(db, ROOM_PATH+'/typing/'+myId), myName);
+  if (typingTimer) clearTimeout(typingTimer);
+  typingTimer = setTimeout(()=>set(ref(db, ROOM_PATH+'/typing/'+myId), null), 3000);
 };
-function renderTyping(names){
-  const el=document.getElementById('typing');
-  if(!names.length){el.innerHTML='';return;}
-  const t=T[lang];
-  const lbl=names.length===1?t.t1(names[0]):t.tn(names.join(', '));
-  el.innerHTML=`<span class="dots"><span></span><span></span><span></span></span>${lbl}`;
+
+function renderTyping(names) {
+  const el = document.getElementById('typing-indicator');
+  if (!names.length) { el.innerHTML=''; return; }
+  const t = T[lang];
+  const label = names.length===1 ? t.typing1(names[0]) : t.typingN(names.join(', '));
+  el.innerHTML=`<span class="dot-bounce"><span></span><span></span><span></span></span> ${label}`;
 }
-window.onKey = e=>{ if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();} };
+
+// ── KEYBOARD ────────────────────────────────────────────────────
+window.handleKey = function(e) { if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();} };
 function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
 
-// ── KICK ──────────────────────────────────────────────────────────
-window.openKick = (id,name)=>{
-  kickId=id; document.getElementById('kname').textContent=name;
-  document.getElementById('kickModal').classList.add('show');
+// ── KICK ────────────────────────────────────────────────────────
+window.openKick = function(id, name) {
+  kickTargetId = id;
+  document.getElementById('kickName').textContent = name;
+  document.getElementById('kick-modal').classList.add('show');
 };
-window.closeKick = ()=>{ kickId=null; document.getElementById('kickModal').classList.remove('show'); };
-window.doKick = ()=>{
-  if(!kickId)return;
-  const name=document.getElementById('kname').textContent;
-  set(ref(db,RPATH+'/kicks/'+kickId),{by:myId,at:serverTimestamp()});
-  remove(ref(db,RPATH+'/presence/'+kickId));
-  toast('🚫 '+name+' '+T[lang].kicked2);
+window.closeKick = function() {
+  kickTargetId = null;
+  document.getElementById('kick-modal').classList.remove('show');
+};
+window.confirmKick = function() {
+  if (!kickTargetId) return;
+  // write kick signal — kicked user's listener will detect it
+  set(ref(db, ROOM_PATH+'/kicks/'+kickTargetId), { by: myId, at: serverTimestamp() });
+  // remove their presence
+  remove(ref(db, ROOM_PATH+'/presence/'+kickTargetId));
+  toast('🚫 ' + document.getElementById('kickName').textContent + ' ' + (lang==='ar'?'تمت إزالته':'removed'));
   closeKick();
 };
 
-// ── LEAVE ─────────────────────────────────────────────────────────
-window.leaveRoom = ()=>{
+// ── LEAVE ────────────────────────────────────────────────────────
+window.leaveRoom = function() {
   endCall();
-  remove(ref(db,RPATH+'/presence/'+myId));
-  set(ref(db,RPATH+'/typing/'+myId),null);
+  remove(ref(db, ROOM_PATH+'/presence/'+myId));
+  set(ref(db, ROOM_PATH+'/typing/'+myId), null);
   location.reload();
 };
 
-// ── CALL ──────────────────────────────────────────────────────────
-window.toggleCall = async ()=>{
-  if(document.getElementById('callOv').classList.contains('show')){endCall();return;}
-  try{localStream=await navigator.mediaDevices.getUserMedia({video:true,audio:true});}
-  catch(e){try{localStream=await navigator.mediaDevices.getUserMedia({audio:true});}
-  catch(e2){toast('❌ '+(lang==='ar'?'تعذّر الوصول للكاميرا':'Camera/mic denied'));return;}}
-  document.getElementById('localVid').srcObject=localStream;
-  document.getElementById('callOv').classList.add('show');
+// ══ WEBRTC CALLS (PeerJS) ════════════════════════════════════════
+function initPeer() {
+  peer = new Peer(undefined, {
+    host:'0.peerjs.com', port:443, path:'/', secure:true,
+    config:{iceServers:[{urls:'stun:stun.l.google.com:19302'}]}
+  });
+  peer.on('open', peerId => {
+    set(ref(db, ROOM_PATH+'/peers/'+myId), peerId);
+    onDisconnect(ref(db, ROOM_PATH+'/peers/'+myId)).remove();
+  });
+  peer.on('call', handleIncomingCall);
+}
+
+window.toggleCall = async function() {
+  if (document.getElementById('call-overlay').classList.contains('show')) { endCall(); return; }
+  try { localStream = await navigator.mediaDevices.getUserMedia({video:true,audio:true}); }
+  catch(e) {
+    try { localStream = await navigator.mediaDevices.getUserMedia({audio:true}); }
+    catch(e2) { toast('❌ '+(lang==='ar'?'تعذّر الوصول للكاميرا':'Camera/mic denied')); return; }
+  }
+  document.getElementById('localVideo').srcObject = localStream;
+  document.getElementById('call-overlay').classList.add('show');
   document.getElementById('callBtn').classList.add('active');
-  document.getElementById('cstat').textContent=T[lang].calling;
+  document.getElementById('callStatus').textContent = lang==='ar'?'متصل':'In call';
+
+  // call all peers in room
+  onValue(ref(db, ROOM_PATH+'/peers'), snap => {
+    const peers = snap.val()||{};
+    Object.entries(peers).forEach(([uid, peerId]) => {
+      if (uid===myId || calls[peerId]) return;
+      const call = peer.call(peerId, localStream);
+      calls[peerId] = call;
+      call.on('stream', rs => addVideoTile(peerId, rs, uid));
+      call.on('close', ()=>{ delete calls[peerId]; removeVideoTile(peerId); });
+    });
+  }, { onlyOnce: true });
 };
 
-window.endCall = ()=>{
-  Object.values(calls).forEach(c=>c.close());calls={};
+function handleIncomingCall(call) {
+  const answer = stream => {
+    localStream = stream;
+    document.getElementById('localVideo').srcObject = stream;
+    document.getElementById('call-overlay').classList.add('show');
+    document.getElementById('callBtn').classList.add('active');
+    call.answer(stream);
+    calls[call.peer] = call;
+    call.on('stream', rs => addVideoTile(call.peer, rs, ''));
+    call.on('close', ()=>{ delete calls[call.peer]; removeVideoTile(call.peer); });
+  };
+  if (localStream) { answer(localStream); return; }
+  navigator.mediaDevices.getUserMedia({video:true,audio:true})
+    .catch(()=>navigator.mediaDevices.getUserMedia({audio:true}))
+    .then(answer).catch(()=>call.answer());
+}
+
+function addVideoTile(peerId, stream, memberId) {
+  if (document.getElementById('tile-'+peerId)) return;
+  const tile = document.createElement('div');
+  tile.className='video-tile'; tile.id='tile-'+peerId;
+  tile.innerHTML=`<video autoplay playsinline></video><div class="video-tile-label">${memberId||'👤'}</div>`;
+  tile.querySelector('video').srcObject = stream;
+  document.getElementById('videosGrid').appendChild(tile);
+}
+function removeVideoTile(pid) { document.getElementById('tile-'+pid)?.remove(); }
+
+window.endCall = function() {
+  Object.values(calls).forEach(c=>c.close()); calls={};
   if(localStream){localStream.getTracks().forEach(t=>t.stop());localStream=null;}
-  document.getElementById('localVid').srcObject=null;
-  document.getElementById('callOv').classList.remove('show');
+  document.getElementById('localVideo').srcObject=null;
+  document.getElementById('call-overlay').classList.remove('show');
   document.getElementById('callBtn').classList.remove('active');
-  document.querySelectorAll('.vtile:not(#localTile)').forEach(t=>t.remove());
-  isMuted=false;isVidOff=false;
+  document.querySelectorAll('.video-tile:not(#localTile)').forEach(t=>t.remove());
+  isMuted=false; isVideoOff=false;
   document.getElementById('muteBtn').classList.remove('on');
-  document.getElementById('vidBtn').classList.remove('on');
+  document.getElementById('videoBtn').classList.remove('on');
   document.getElementById('muteBtn').textContent='🎤';
-  document.getElementById('vidBtn').textContent='📷';
+  document.getElementById('videoBtn').textContent='📷';
 };
-window.toggleMute = ()=>{
+
+window.toggleMute = function() {
   isMuted=!isMuted;
   localStream?.getAudioTracks().forEach(t=>t.enabled=!isMuted);
   document.getElementById('muteBtn').classList.toggle('on',isMuted);
   document.getElementById('muteBtn').textContent=isMuted?'🔇':'🎤';
 };
-window.toggleVid = ()=>{
-  isVidOff=!isVidOff;
-  localStream?.getVideoTracks().forEach(t=>t.enabled=!isVidOff);
-  document.getElementById('vidBtn').classList.toggle('on',isVidOff);
-  document.getElementById('vidBtn').textContent=isVidOff?'🚫':'📷';
+window.toggleVideo = function() {
+  isVideoOff=!isVideoOff;
+  localStream?.getVideoTracks().forEach(t=>t.enabled=!isVideoOff);
+  document.getElementById('videoBtn').classList.toggle('on',isVideoOff);
+  document.getElementById('videoBtn').textContent=isVideoOff?'🚫':'📷';
 };
 </script>
 </body>
