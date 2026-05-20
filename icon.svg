@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dd0000"/>
+      <stop offset="100%" style="stop-color:#aa0000"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="8" dy="8" stdDeviation="6" flood-color="#660000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <!-- Background rounded square -->
+  <rect width="512" height="512" rx="100" fill="url(#bg)"/>
+  <!-- Dark shadow overlay bottom-right -->
+  <path d="M512 300 L512 512 L300 512 Z" fill="#880000" opacity="0.4"/>
+  <!-- Left bubble (white, larger) -->
+  <ellipse cx="195" cy="220" rx="130" ry="110" fill="white" opacity="0.95"/>
+  <path d="M110 310 L140 360 L200 310 Z" fill="white" opacity="0.95"/>
+  <!-- Right bubble (red outline then fill) -->
+  <ellipse cx="310" cy="270" rx="120" ry="100" fill="white" opacity="0.85"/>
+  <ellipse cx="310" cy="270" rx="100" ry="82" fill="#cc0000"/>
+  <path d="M230 350 L260 395 L310 350 Z" fill="white" opacity="0.85"/>
+  <path d="M245 368 L265 395 L310 368 Z" fill="#cc0000"/>
+  <!-- Lines in right bubble -->
+  <rect x="265" y="248" width="90" height="16" rx="8" fill="white"/>
+  <rect x="265" y="272" width="78" height="16" rx="8" fill="white"/>
+  <rect x="265" y="296" width="64" height="16" rx="8" fill="white"/>
+</svg>

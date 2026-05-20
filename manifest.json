@@ -1,0 +1,18 @@
+{
+  "name": "HF.CHAT",
+  "short_name": "HF.CHAT",
+  "description": "Houmani Family Private Chat",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0f14",
+  "theme_color": "#cc0000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
